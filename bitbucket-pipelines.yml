@@ -1,0 +1,29 @@
+image: maven:3.6.1-jdk-13
+
+pipelines:
+  default:
+    - step:
+        echo: 'executing the default execution'
+        name: default executions
+        caches:
+          - maven
+        script:
+          - mvn clean
+          - mvn package
+          - mvn test
+
+    - step:
+        echo: 'executing install maven'
+        name: install maven
+        caches:
+          - maven
+        script:
+          - mvn install
+
+    - step:
+        echo: 'executing verify'
+        name: verify
+        caches:
+          - maven
+        script:
+          - mvn verify

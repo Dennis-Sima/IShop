@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" style="height: 100%">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Shopping Cart</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+</head>
+<body style="height: 100%; display: flex; flex-direction: column;">
+<div class="container" style="flex: 1 0 auto;">
+        <h1>Add Shopping Cart</h1>
+        <a class="btn btn-info" th:href="@{/shoppingCarts}">Back</a>
+        <form method="post" th:object="${shoppingCart}">
+            <div class="form-group blu-margin">
+                <select class="form-control" th:field="${shoppingCart.customer}"  id="selectCustomer">
+                    <option value="0">Select Customer</option>
+                    <option th:each="customer : ${customers}" th:value="${customer.id}" th:text="${customer.getFirst_name()} + ' ' + ${customer.getLast_name()}"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <select class="form-control" id="selectProduct" th:field="${shoppingCartItem.product}">
+                    <option value="0">Select Product</option>
+                    <option th:each="p : ${products}"  th:value="${p.ean}" th:text="${p.getManufacturer().getName()} + ' ' + ${p.getName()} + ' ' + ${p.getPrice()} + '€'"></option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    <!-- Footer -->
+    <footer class="page-footer font-small blue pt-4" style=" flex-shrink: 0; background: #4285F4; color: white ">
+
+        <!-- Footer Links -->
+        <div class="container-fluid text-center text-md-left">
+
+            <!-- Grid row -->
+            <div class="row">
+
+                <!-- Grid column -->
+                <div class="col-md-6 mt-md-0 mt-3">
+
+                    <!-- Content -->
+                    <h5 class="text-uppercase">IShop GmbH</h5>
+                    <p>Here you can switch to all content.</p>
+
+                </div>
+                <!-- Grid column -->
+
+                <hr class="clearfix w-100 d-md-none pb-3">
+
+
+                <!-- Grid column -->
+                <div class="col-md-3 mb-md-0 mb-3">
+
+                    <!-- Links -->
+                    <h5 class="text-uppercase">Links</h5>
+
+                    <ul class="list-unstyled">
+                        <li>
+                            <a style="color: white" href="/customers">browse customers</a>
+                        </li>
+                        <li>
+                            <a style="color: white" href="/products">browse products</a>
+                        </li>
+                        <li>
+                            <a style="color: white" href="/manufacturers">browse manufacturers</a>
+                        </li>
+                        <li>
+                            <a style="color: white" href="/orders">browse orders</a>
+                        </li>
+                        <li>
+                            <a style="color: white" href="/shoppingCarts">browse shoppingCarts</a>
+                        </li>
+                    </ul>
+
+                </div>
+                <!-- Grid column -->
+
+            </div>
+            <!-- Grid row -->
+
+        </div>
+        <!-- Footer Links -->
+
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3" style="background: #0d47a1">© 2020 Copyright:
+            <a href="../"> IShop.com</a>
+        </div>
+        <!-- Copyright -->
+
+    </footer>
+    <!-- Footer -->
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+@startuml
+
+class OrderItem
+class OrderItem
+class Product
+class Customer
+class Manufacturer
+enum Category
+class Shopping_cart
+class Shopping_cart_item
+
+Order *-- OrderItem
+Order -- OrderItem
+Order -- Customer
+OrderItem -- Product
+
+Product -- Manufacturer
+Category --> Product
+Shopping_cart *-- Shopping_cart_item
+Shopping_cart_item -- Shopping_cart
+Shopping_cart_item -- Product
+Customer -- Shopping_cart
+
+@enduml
